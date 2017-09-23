@@ -112,7 +112,7 @@ namespace ayoti
             label1.Text = "Started Upload...";
             //NAV nav = new NAV(new Uri("https://zagaasportsfoundationorg.financials.dynamics.com:7048/MS/OData/Company('AYO')"));
             //nav.Credentials = new NetworkCredential("TIMOTHY", "U8Blq49KHpLTYHJe97dDdWBN71GROlm1xjbV78qsSTU=");
-            NAV nav = new NAV(new Uri("https://ayotigroup.financials.dynamics.com:7048/MS/OData/Company('AYOTI LIVE')"));//AYOTI LIVE
+            NAV nav = new NAV(new Uri("https://ayotigroup.financials.dynamics.com:7048/MS/OData/Company('My Company')"));//AYOTI LIVE
             nav.Credentials = new NetworkCredential("ADMIN", "sdG6zobPh0dw8vUNcAGJ4tkMuCZhX1IO8w5K+pAu7ng=");
             routecode = routes.Where(r => r.SalesPerson.Equals(cmbRoute.Text)).FirstOrDefault().Code;
             // PrintCustomersCalledCust(nav);
@@ -220,6 +220,7 @@ namespace ayoti
             Sales_InvoiceSalesLines line = null;
             foreach (var c in customerlst)
             {
+                Sale currentsale = null;
                 List<Sale> salesline = saleslst.Where(x => x.Customer == c.Customer).ToList();
                 invoice = new Sales_Invoice()
                 {
@@ -237,6 +238,7 @@ namespace ayoti
                 nav.AddObject("Sales_Invoice", invoice);
                 foreach (var saleline in salesline)
                 {
+                    currentsale = saleline;
                     line = new Sales_InvoiceSalesLines()
                     {
                         Description = saleline.Product,
@@ -260,6 +262,11 @@ namespace ayoti
                 }
                 catch ( Exception ex)
                 {
+                    if(currentsale != null)
+                    {
+                        String errorstr = String.Format("Customer :{0} with Product {1} Quantity {2} .Error: ", c.Customer, currentsale.Product, currentsale.Quantity);
+                        Logger.LogThisLine(errorstr + ex.Message);
+                    }                    
                     MessageBox.Show(ex.ToString());
                     var confirmResult = MessageBox.Show("Do you want to exit the application ??",
                                      "Confirm Exit",
