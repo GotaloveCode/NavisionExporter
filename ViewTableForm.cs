@@ -112,7 +112,7 @@ namespace ayoti
             label1.Text = "Started Upload...";
             //NAV nav = new NAV(new Uri("https://zagaasportsfoundationorg.financials.dynamics.com:7048/MS/OData/Company('AYO')"));
             //nav.Credentials = new NetworkCredential("TIMOTHY", "U8Blq49KHpLTYHJe97dDdWBN71GROlm1xjbV78qsSTU=");
-            NAV nav = new NAV(new Uri("https://ayotigroup.financials.dynamics.com:7048/MS/OData/Company('My Company')"));//AYOTI LIVE
+            NAV nav = new NAV(new Uri("https://ayotigroup.financials.dynamics.com:7048/MS/OData/Company('AYOTI LIVE')"));//AYOTI LIVE
             nav.Credentials = new NetworkCredential("ADMIN", "sdG6zobPh0dw8vUNcAGJ4tkMuCZhX1IO8w5K+pAu7ng=");
             routecode = routes.Where(r => r.SalesPerson.Equals(cmbRoute.Text)).FirstOrDefault().Code;
             // PrintCustomersCalledCust(nav);
@@ -298,10 +298,12 @@ namespace ayoti
             using (con = new SqlConnection(DBCon))
             {
                 con.Open();
-                string sql = string.Format("UPDATE Sales SET Uploaded=1 WHERE Customer = '{0}' AND SalesPerson='{1}'", customer, salesperson);
+                string sql = "UPDATE Sales SET Uploaded=1 WHERE Customer =@customer AND SalesPerson=@salesperson";
                 
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
+                    command.Parameters.AddWithValue("@customer", customer);
+                    command.Parameters.AddWithValue("@salesperson", salesperson);
                     rowsUpdated = command.ExecuteNonQuery();
                 }
             }
