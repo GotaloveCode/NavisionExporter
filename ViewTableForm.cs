@@ -39,6 +39,7 @@ namespace ayoti
              new SP() { Code = "AY035", SalesPerson = "Gordon Otieno" },
         };
         List<SP> routes = new List<SP>()  {
+             new SP() { Code = "R001", SalesPerson = "Mashinani/Rural" },
              new SP() { Code = "R737", SalesPerson = "Staff" },
              new SP() { Code = "R782", SalesPerson = "Lake Key accounts" },
              new SP() { Code = "R066", SalesPerson = "Kondele" },
@@ -94,7 +95,7 @@ namespace ayoti
                    SalesPerson = grp.First().SalesPerson
                }).ToList();
             loadRoutes();
-            cmbRoute.Text = "Staff";
+            cmbRoute.Text = "Mashinani/Rural";
             
         }
 

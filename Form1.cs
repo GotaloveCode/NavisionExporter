@@ -213,7 +213,7 @@ namespace ayoti
                                     data[col - 1] = Convert.ToString(((Range)objRange.MergeArea[1, 1]).Text).Trim();
                                     mergedColumns = objRange.MergeArea.Columns.Count;
                                     //Debug.WriteLine("mergedColumns" + mergedColumns);
-                                    //Debug.WriteLine(data[col - 1] + " row" + row + ",col" + col);
+                                    Debug.WriteLine(data[col - 1] + " row" + row + ",col" + col);
                                     columnname = data[col - 1].ToString().ToLower();
                                     switch (columnname)
                                     {
