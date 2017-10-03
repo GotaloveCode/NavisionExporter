@@ -228,7 +228,9 @@ namespace ayoti
                     Document_Type = "Invoice",
                     Sell_to_Customer_No = c.Customer.Trim(),
                     Salesperson_Code = getSalesPerson(c.SalesPerson.Trim()),
-                    Posting_Date = dateTimePicker.Value,    
+                    Posting_Date = dateTimePicker.Value,
+                    Shipment_Date = dateTimePicker.Value,
+                    Due_Date = dateTimePicker.Value,    
                     //Currency_Code = "KES",
                     //live
                     Shortcut_Dimension_1_Code = routecode,

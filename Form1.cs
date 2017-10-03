@@ -196,7 +196,7 @@ namespace ayoti
                     totalColumns = workSheet.UsedRange.Cells.Columns.Count + 1;
                     usableColumns = totalColumns - 16;
                     totalRows = workSheet.UsedRange.Cells.Rows.Count;
-                    usableRows = totalRows - 37;
+                    usableRows = totalRows - 23;
                     object[] data = null;
                     richTextBox1.Text += "Excel Worksheet: " + sheetCounter + ",Salesperson:" + salesperson;
                     //Iterating from row 3 because first row contains HeaderNames
@@ -205,6 +205,7 @@ namespace ayoti
                         data = new object[usableColumns - 1];
                         if (row == 3)
                         {
+                            col = 0;
                             for (col = 1; col < usableColumns; col++)
                             {
                                 objRange = workSheet.Cells[row, col];
@@ -213,7 +214,7 @@ namespace ayoti
                                     data[col - 1] = Convert.ToString(((Range)objRange.MergeArea[1, 1]).Text).Trim();
                                     mergedColumns = objRange.MergeArea.Columns.Count;
                                     //Debug.WriteLine("mergedColumns" + mergedColumns);
-                                    Debug.WriteLine(data[col - 1] + " row" + row + ",col" + col);
+                                    //Debug.WriteLine(data[col - 1] + " row" + row + ",col" + col);
                                     columnname = data[col - 1].ToString().ToLower();
                                     switch (columnname)
                                     {
@@ -235,7 +236,7 @@ namespace ayoti
                                             nonalColStart = col - 1;
                                             nonalColEnd = col + mergedColumns - 1;
                                             break;
-                                        case "cider/perry":
+                                        case "cider/ perry":
                                             ciderColStart = col - 1;
                                             ciderColEnd = col + mergedColumns - 1;
                                             break;
@@ -251,7 +252,7 @@ namespace ayoti
                                     //Debug.WriteLine(data[col - 1] + " row si mege" + row + ",col" + col);
                                     if (data[col - 1] != null)
                                     { // cider not always a merged cell
-                                        if (data[col - 1].ToString().ToLower() == "cider/perry")
+                                        if (data[col - 1].ToString().ToLower() == "cider/ perry")
                                         {
                                             ciderColStart = col - 1;
                                             ciderColEnd = col - 1;
@@ -269,6 +270,7 @@ namespace ayoti
                         }
                         else
                         {
+                            col = 0;
                             for (col = 1; col < usableColumns; col++)
                             {
                                 objRange = workSheet.Cells[row, col];
