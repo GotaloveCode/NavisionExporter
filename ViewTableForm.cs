@@ -294,6 +294,7 @@ namespace ayoti
             btnUpload.Enabled = true;
             btnBBack.Enabled = true;
             label1.Text = "Completed Upload";
+            System.Media.SystemSounds.Exclamation.Play();
             MessageBox.Show("Completed Upload");
         }
 
