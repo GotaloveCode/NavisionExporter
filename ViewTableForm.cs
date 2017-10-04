@@ -1,5 +1,5 @@
 ﻿using ayoti.ServiceReference1;//ayoti
-//using ayoti.ServiceReference2;//zagaa
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,6 +40,7 @@ namespace ayoti
         };
         List<SP> routes = new List<SP>()  {
              new SP() { Code = "R001", SalesPerson = "Mashinani/Rural" },
+             new SP() { Code = "R002", SalesPerson = "Kwisero" },
              new SP() { Code = "R737", SalesPerson = "Staff" },
              new SP() { Code = "R782", SalesPerson = "Lake Key accounts" },
              new SP() { Code = "R066", SalesPerson = "Kondele" },
@@ -293,6 +294,7 @@ namespace ayoti
             btnUpload.Enabled = true;
             btnBBack.Enabled = true;
             label1.Text = "Completed Upload";
+            MessageBox.Show("Completed Upload");
         }
 
         int setUploaded(string customer,string salesperson)

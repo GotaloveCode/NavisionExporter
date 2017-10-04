@@ -30,7 +30,7 @@ namespace ayoti
 
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -538,6 +538,10 @@ namespace ayoti
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                MessageBox.Show("Completed");
             }
         }
     }
