@@ -112,10 +112,8 @@ namespace ayoti
             btnUpload.Enabled = false;
             btnBBack.Enabled = false;
             label1.Text = "Started Upload...";
-            //NAV nav = new NAV(new Uri("https://zagaasportsfoundationorg.financials.dynamics.com:7048/MS/OData/Company('AYO')"));
-            //nav.Credentials = new NetworkCredential("TIMOTHY", "U8Blq49KHpLTYHJe97dDdWBN71GROlm1xjbV78qsSTU=");
-            NAV nav = new NAV(new Uri("https://ayotigroup.financials.dynamics.com:7048/MS/OData/Company('AYOTI LIVE')"));//AYOTI LIVE
-            nav.Credentials = new NetworkCredential("ADMIN", "sdG6zobPh0dw8vUNcAGJ4tkMuCZhX1IO8w5K+pAu7ng=");
+            NAV nav = new NAV(new Uri("https://test.financials.dynamics.com:7048/MS/OData/Company('AYOTI')"));//AYOTI LIVE
+            nav.Credentials = new NetworkCredential("ADMIN", "testpass");
             routecode = routes.Where(r => r.SalesPerson.Equals(cmbRoute.Text)).FirstOrDefault().Code;
             // PrintCustomersCalledCust(nav);
             CreateInvoice(nav);
